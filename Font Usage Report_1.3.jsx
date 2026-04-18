@@ -1,11 +1,11 @@
 //@targetengine "session"
 
-// Macmillan Font Usage Report (Alert on Google Fonts when creating report)
+// Font Usage Report (Alert on Google Fonts when creating report)
 
 /*     
   
     + Author: Amybeth Menendez
-    + Contributor: Matthew Retzer
+
     + Created: September 2025
     + InDesign Version: 2024
     + Script version beta-2.2.2 / Release 1.0
