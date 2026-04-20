@@ -51,7 +51,7 @@
 
 */
 
-app.doScript(main, ScriptLanguage.JAVASCRIPT , [], UndoModes.ENTIRE_SCRIPT, "Macmillan Font Usage Report");
+app.doScript(main, ScriptLanguage.JAVASCRIPT , [], UndoModes.ENTIRE_SCRIPT, "Font Usage Report");
 
 function main() {
     var version = "1.3.0";
