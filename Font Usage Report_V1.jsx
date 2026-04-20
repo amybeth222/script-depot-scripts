@@ -1,6 +1,6 @@
 //@targetengine "session"
 
-// Macmillan Font Usage Report (Alert on Google Fonts when creating report)
+// Font Usage Report (Alert on Google Fonts when creating report)
 
 /*     
   
