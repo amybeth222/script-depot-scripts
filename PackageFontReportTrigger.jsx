@@ -2,7 +2,7 @@
 
 /*
     PackageFontReportTrigger.jsx
-    Macmillan Trade Publishing - US
+   Amybeth Menendez
 
     PURPOSE:
         Hooks into File > Package. After the package dialog completes:
