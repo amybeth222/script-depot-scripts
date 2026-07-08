@@ -18,7 +18,7 @@
 
     REQUIRES:
         Font Usage Report_V1.jsx must be the MODIFIED version that checks
-        a temp file (MacmillanFontReportSavePath.txt) before saving.
+        a temp file (Yourfilenamehere.txt) before saving.
 */
 
 (function () {
@@ -27,7 +27,7 @@
     var FONT_REPORT_PATH = File($.fileName).parent.fsName + "/Font Usage Report_V1.jsx";
 
     // ─── GUARD ────────────────────────────────────────────────────────────────
-    if ($.global.MacmillanFontReportListenerActive === true) {
+    if ($.global.YourScriptnameHere.FontReportListenerActive === true) {
         alert("Font Report Package Trigger is already active this session.\nNo duplicate listener added.");
         return;
     }
@@ -46,33 +46,33 @@
     // We record what folders exist NOW so we can identify the new package folder after.
     packageAction.addEventListener("beforeInvoke", function (event) {
         if (app.documents.length === 0 || !app.activeDocument.saved) {
-            $.global.MacmillanBeforeFolderSnapshot = null;
-            $.global.MacmillanDocFolder = null;
-            $.global.MacmillanDocNameBase = null;
-            $.global.MacmillanPackageStartTime = null;
+            $.global.YourScriptnameHereBeforeFolderSnapshot = null;
+            $.global.YourScriptnameHereDocFolder = null;
+            $.global.YourScriptnameHereDocNameBase = null;
+            $.global.YourScriptnameHerePackageStartTime = null;
             return;
         }
         var doc = app.activeDocument;
         var docFolder = doc.filePath;
-        $.global.MacmillanDocFolder = docFolder.fsName;
-        $.global.MacmillanDocNameBase = stripExtension(doc.name);
-        $.global.MacmillanPackageStartTime = (new Date()).getTime();
-        $.global.MacmillanBeforeFolderSnapshot = getFolderNames(docFolder);
+        $.global.YourScriptnameHereDocFolder = docFolder.fsName;
+        $.global.YourScriptnameHereDocNameBase = stripExtension(doc.name);
+        $.global.YourScriptnameHerePackageStartTime = (new Date()).getTime();
+        $.global.YourScriptnameHereBeforeFolderSnapshot = getFolderNames(docFolder);
     }, false);
 
     // ─── afterInvoke: find new package folder, run report into it ─────────────
     packageAction.addEventListener("afterInvoke", function (event) {
 
-        var docFolderPath = $.global.MacmillanDocFolder;
-        var beforeSnapshot = $.global.MacmillanBeforeFolderSnapshot;
-        var docNameBase = $.global.MacmillanDocNameBase;
-        var packageStartTime = $.global.MacmillanPackageStartTime;
+        var docFolderPath = $.global.YourScriptnameHereDocFolder;
+        var beforeSnapshot = $.global.YourScriptnameHereBeforeFolderSnapshot;
+        var docNameBase = $.global.YourScriptnameHereDocNameBase;
+        var packageStartTime = $.global.YourScriptnameHerePackageStartTime;
 
         // Clean up snapshot globals (keep SavePath alive until report uses it)
-        $.global.MacmillanDocFolder = null;
-        $.global.MacmillanBeforeFolderSnapshot = null;
-        $.global.MacmillanDocNameBase = null;
-        $.global.MacmillanPackageStartTime = null;
+        $.global.YourScriptnameHereDocFolder = null;
+        $.global.YourScriptnameHereBeforeFolderSnapshot = null;
+        $.global.YourScriptnameHereDocNameBase = null;
+        $.global.YourScriptnameHerePackageStartTime = null;
 
         if (!docFolderPath || !beforeSnapshot) { return; }
 
@@ -115,7 +115,7 @@
         }
 
         if (packageFolder) {
-            var tempFile = new File(Folder.temp.fsName + "/MacmillanFontReportSavePath.txt");
+            var tempFile = new File(Folder.temp.fsName + "/YourScriptnameHereFontReportSavePath.txt");
             if (tempFile.open("w")) {
                 tempFile.write(packageFolder.fsName);
                 tempFile.close();
@@ -128,7 +128,7 @@
                 ScriptLanguage.JAVASCRIPT,
                 [],
                 UndoModes.ENTIRE_SCRIPT,
-                "Macmillan Font Usage Report (Package Trigger)"
+                "YourScriptnameHere Font Usage Report (Package Trigger)"
             );
         } catch (e) {
             alert("Font Usage Report encountered an error:\n" + e);
@@ -136,7 +136,7 @@
 
     }, false);
 
-    $.global.MacmillanFontReportListenerActive = true;
+    $.global.YourScriptnameHereFontReportListenerActive = true;
 
     alert(
         "Font Report Package Trigger is now ACTIVE.\n\n" +
@@ -405,7 +405,7 @@
 //@targetengine "session"
 
 (function () {
-    if ($.global.MacmillanFontReportListenerActive === true) {
+    if ($.global.YourScriptnameHereFontReportListenerActive === true) {
         var packageAction = app.menuActions.itemByName("$ID/Package...");
         var listeners = packageAction.eventListeners;
         for (var i = listeners.length - 1; i >= 0; i--) {
@@ -414,7 +414,7 @@
                 listeners[i].remove();
             }
         }
-        $.global.MacmillanFontReportListenerActive = false;
+        $.global.YourScriptnameHereFontReportListenerActive = false;
         alert("Font Report Package Trigger has been REMOVED.");
     } else {
         alert("No active Font Report Package Trigger found in this session.");
